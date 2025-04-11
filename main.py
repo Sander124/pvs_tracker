@@ -143,7 +143,7 @@ def main():
     
     # Get data
     #supply_df = get_supply_data()
-    
+    supply_df = []
     # Tab 1: Main Dashboard
     with tab1:
         st.header("PVS Price Chart")
