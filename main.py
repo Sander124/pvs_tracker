@@ -38,7 +38,7 @@ def add_supply_data(timestamp, total_supply):
     if collection:
         try:
             collection.insert_one({
-                "timestamp": timestamp.isoformat(),
+                "time": timestamp.isoformat(),
                 "total_supply": total_supply
             })
             return True
@@ -58,11 +58,11 @@ def calculate_metrics(df):
     
     latest = df.iloc[-1]
     latest_supply = latest['total_supply']
-    latest_time = latest['timestamp']
+    latest_time = latest['time']
     
     # 24h change
     day_ago = latest_time - timedelta(days=1)
-    day_df = df[df['timestamp'] >= day_ago]
+    day_df = df[df['time'] >= day_ago]
     day_change = 0
     if not day_df.empty and len(day_df) > 1:
         first_day = day_df.iloc[0]['total_supply']
@@ -70,7 +70,7 @@ def calculate_metrics(df):
     
     # 7d change
     week_ago = latest_time - timedelta(days=7)
-    week_df = df[df['timestamp'] >= week_ago]
+    week_df = df[df['time'] >= week_ago]
     week_change = 0
     if not week_df.empty and len(week_df) > 1:
         first_week = week_df.iloc[0]['total_supply']
@@ -78,7 +78,7 @@ def calculate_metrics(df):
     
     # 30d change
     month_ago = latest_time - timedelta(days=30)
-    month_df = df[df['timestamp'] >= month_ago]
+    month_df = df[df['time'] >= month_ago]
     month_change = 0
     if not month_df.empty and len(month_df) > 1:
         first_month = month_df.iloc[0]['total_supply']
@@ -105,10 +105,10 @@ def create_supply_chart(df):
     
     fig = px.line(
         df, 
-        x='timestamp', 
+        x='time', 
         y='total_supply',
         title='PVS Total Supply Over Time',
-        labels={'timestamp': 'Date', 'total_supply': 'Total Supply'}
+        labels={'time': 'Date', 'total_supply': 'Total Supply'}
     )
     
     # Add a note that downward trend is positive for the price
@@ -212,7 +212,7 @@ def main():
             # Show data table
             st.subheader("Historical Data")
             display_df = supply_df.copy()
-            display_df['timestamp'] = display_df['timestamp'].dt.strftime('%Y-%m-%d %H:%M:%S')
+            display_df['time'] = display_df['time'].dt.strftime('%Y-%m-%d %H:%M:%S')
             st.dataframe(display_df)
         else:
             st.warning("No supply data available. Please add data in the 'Add Data' tab.")
