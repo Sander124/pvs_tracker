@@ -17,8 +17,8 @@ def get_mongodb_connection():
     
     try:
         client = MongoClient(mongo_uri)
-        db = client["crypto_dashboard"]
-        collection = db["pvs_supply"]
+        db = client["pvs_db"]
+        collection = db["pvs_db"]
         return collection
     except Exception as e:
         st.error(f"Failed to connect to MongoDB: {e}")
