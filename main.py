@@ -5,19 +5,15 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import pymongo
 from pymongo import MongoClient
-import os
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
 
 # MongoDB connection
 def get_mongodb_connection():
-    # Get MongoDB connection string from environment variable
-    mongo_uri = os.getenv("MONGO_URI")
-    if not mongo_uri:
-        st.error("MongoDB connection string not found. Please set the MONGO_URI environment variable.")
-        return None
+    # Get MongoDB connection string from Streamlit secrets
+    try:
+        mongo_uri = st.secrets["MONGO_URI"]
+        if not mongo_uri:
+            st.error("MongoDB connection string not found in Streamlit secrets.")
+            return None
     
     try:
         client = MongoClient(mongo_uri)
