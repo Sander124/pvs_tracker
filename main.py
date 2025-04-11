@@ -27,10 +27,10 @@ def get_supply_data():
         data = collection
         if data:
             df = pd.DataFrame(data)
-            df['timestamp'] = pd.to_datetime(df['timestamp'])
-            df = df.sort_values('timestamp')
-            return df
-    return pd.DataFrame(columns=['timestamp', 'total_supply'])
+            df['time'] = pd.to_datetime(df['time'])
+            df = df.sort_values('time')
+            return df[['time','total_supply']]
+    return pd.DataFrame(columns=['time', 'total_supply'])
 
 # Add new supply data to MongoDB
 def add_supply_data(timestamp, total_supply):
