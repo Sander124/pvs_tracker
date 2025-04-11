@@ -14,8 +14,7 @@ def get_mongodb_connection():
     try:
         client = MongoClient(mongo_uri)
         db = client["pvs_db"]
-        collection = db["pvs_db"]
-        st.write(list(collection.find()))
+        collection = list(db["pvs_db"].find())
         return collection
     except Exception as e:
         st.error(f"Failed to connect to MongoDB: {e}")
@@ -25,7 +24,7 @@ def get_mongodb_connection():
 def get_supply_data():
     collection = get_mongodb_connection()
     if collection:
-        data = list(collection.find({}, {"_id": 0, "timestamp": 1, "total_supply": 1}))
+        data = collection
         if data:
             df = pd.DataFrame(data)
             df['timestamp'] = pd.to_datetime(df['timestamp'])
