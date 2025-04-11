@@ -14,6 +14,7 @@ def get_mongodb_connection():
     try:
         client = MongoClient(mongo_uri)
         db = client["pvs_db"]
+        st.write(db)
         collection = db["pvs_db"]
         return collection
     except Exception as e:
