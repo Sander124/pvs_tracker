@@ -15,7 +15,7 @@ def get_mongodb_connection():
         client = MongoClient(mongo_uri)
         db = client["pvs_db"]
         collection = db["pvs_db"]
-        st.write(collection)
+        st.write(list(collection.find()))
         return collection
     except Exception as e:
         st.error(f"Failed to connect to MongoDB: {e}")
