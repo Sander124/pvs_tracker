@@ -36,16 +36,15 @@ def get_supply_data():
 # Add new supply data to MongoDB
 def add_supply_data(timestamp, total_supply):
     collection = get_mongodb_connection()
-    if collection:
-        try:
-            collection.insert_one({
+    try:
+        collection.insert_one({
                 "time": timestamp.isoformat(),
                 "total_supply": total_supply
             })
-            return True
-        except Exception as e:
-            st.error(f"Failed to add data: {e}")
-    return False
+        return True
+    except Exception as e:
+        st.error(f"Failed to add data: {e}")
+    
 
 # Calculate supply change metrics
 def calculate_metrics(df):
