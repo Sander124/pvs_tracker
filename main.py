@@ -153,7 +153,7 @@ def main():
         
         # Dextools iframe for price chart
         st.components.v1.iframe(
-            "https://www.dextools.io/app/en/solana/pair-explorer/YOUR_PAIR_ADDRESS_HERE",
+            "https://www.dextools.io/app/en/solana/pair-explorer/98nocLbiDi9ykAjwAUJW9fnYZsf4L4KLCfH7U2LFXDsv?t=1744397006636",
             height=600,
             scrolling=True
         )
