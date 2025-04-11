@@ -142,8 +142,8 @@ def main():
     tab1, tab2, tab3 = st.tabs(["Dashboard", "Supply History", "Add Data"])
     
     # Get data
-    #supply_df = get_supply_data()
-    supply_df = []
+    supply_df = get_supply_data()
+    
     # Tab 1: Main Dashboard
     with tab1:
         st.header("PVS Price Chart")
