@@ -149,13 +149,9 @@ def main():
         st.header("PVS Price Chart")
         
         # Dextools iframe for price chart
-        st.components.v1.iframe(
-            "https://www.dextools.io/app/en/solana/pair-explorer/98nocLbiDi9ykAjwAUJW9fnYZsf4L4KLCfH7U2LFXDsv?t=1744397006636",
-            height=600,
-            scrolling=True
-        )
+        
         st.components.v1.iframe("https://dexscreener.com/solana/98nocLbiDi9ykAjwAUJW9fnYZsf4L4KLCfH7U2LFXDsv?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15",
-        height=500,scrolling=True)
+        height=600,scrolling=True)
         
         st.header("PVS Supply Metrics")
         
