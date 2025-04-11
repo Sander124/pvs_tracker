@@ -9,12 +9,8 @@ from pymongo import MongoClient
 # MongoDB connection
 def get_mongodb_connection():
     # Get MongoDB connection string from Streamlit secrets
-    try:
-        mongo_uri = st.secrets["MONGO_URI"]
-        if not mongo_uri:
-            st.error("MongoDB connection string not found in Streamlit secrets.")
-            return None
     
+    mongo_uri = st.secrets["MONGO_URI"]
     try:
         client = MongoClient(mongo_uri)
         db = client["pvs_db"]
