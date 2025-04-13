@@ -36,8 +36,7 @@ def get_supply_data():
 # Add new supply data to MongoDB
 def add_supply_data(timestamp, total_supply):
     collection = get_mongodb_connection()
-    print(timestamp)
-    print(datetime.now().replace(microsecond=0))
+    timestamp = datetime.now().replace(microsecond=0)
     try:
         collection.insert_one({
                 "time": timestamp.isoformat(),
