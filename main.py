@@ -207,7 +207,8 @@ def main():
                 )
         
             # Filter the dataframe based on selected dates
-            filtered_df = supply_df['time'][selected_dates[0]:selected_dates[1]]
+            filtered_df = supply_df[(supply_df['time'].dt.date >= selected_dates[0]) & 
+                               (supply_df['time'].dt.date <= selected_dates[1])]
        
             supply_chart = create_supply_chart(filtered_df)
             st.plotly_chart(supply_chart, use_container_width=True)
