@@ -110,19 +110,7 @@ def create_supply_chart(df):
         y='total_supply',
         title='PVS Total Supply Over Time',
         labels={'time': 'Date', 'total_supply': 'Total Supply'}
-    )
-    
-    # Add a note that downward trend is positive for the price
-    fig.add_annotation(
-        x=0.5,
-        y=-0.15,
-        xref="paper",
-        yref="paper",
-        showarrow=False,
-        font=dict(size=10, color="grey"),
-        align="center",
-    )
-    
+    )    
     return fig
 
 # App main function
