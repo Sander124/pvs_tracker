@@ -118,7 +118,6 @@ def create_supply_chart(df):
         y=-0.15,
         xref="paper",
         yref="paper",
-        text="Note: Decreasing total supply is generally positive for price",
         showarrow=False,
         font=dict(size=10, color="grey"),
         align="center",
