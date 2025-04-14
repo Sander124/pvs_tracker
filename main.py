@@ -194,7 +194,22 @@ def main():
         
         if not supply_df.empty:
             # Show chart
-            supply_chart = create_supply_chart(supply_df)
+            min_date = supply_df.index.min().date()
+            max_date = supply_df.index.max().date()
+        
+            # Create a date range slider
+            selected_dates = st.slider(
+                "Select Date Range",
+                min_value=min_date,
+                max_value=max_date,
+                value=(min_date, max_date),  # Default to full range
+                format="YYYY-MM-DD"
+                )
+        
+            # Filter the dataframe based on selected dates
+            filtered_df = supply_df.loc[selected_dates[0]:selected_dates[1]]
+       
+            supply_chart = create_supply_chart(filtered_df)
             st.plotly_chart(supply_chart, use_container_width=True)
             
             # Show data table
