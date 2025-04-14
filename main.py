@@ -194,8 +194,8 @@ def main():
         
         if not supply_df.empty:
             # Show chart
-            min_date = supply_df.index.min().date()
-            max_date = supply_df.index.max().date()
+            min_date = supply_df['time'].min().date()
+            max_date = supply_df['time'].max().date()
         
             # Create a date range slider
             selected_dates = st.slider(
@@ -207,7 +207,7 @@ def main():
                 )
         
             # Filter the dataframe based on selected dates
-            filtered_df = supply_df.loc[selected_dates[0]:selected_dates[1]]
+            filtered_df = supply_df['time'][selected_dates[0]:selected_dates[1]]
        
             supply_chart = create_supply_chart(filtered_df)
             st.plotly_chart(supply_chart, use_container_width=True)
