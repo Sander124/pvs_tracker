@@ -182,7 +182,7 @@ def main():
                 )
             
             # Latest supply
-            total_sup_start='1.000,000,000'
+            total_sup_start=1000000000
             latest_supply = supply_df.iloc[-1]['total_supply'] if not supply_df.empty else 0
             st.metric("Current Total Supply", f"{latest_supply:,.0f}/{total_sup_start:,.0f}")
         
